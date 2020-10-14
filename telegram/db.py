@@ -8,9 +8,9 @@ from sqlalchemy.engine.url import URL
 POSTGRES_DRIVER_NAME = "postgres"
 POSTGRES_HOST = os.getenv("POSTGRES_HOST", "localhost")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT", "5432")
-POSTGRES_USER = os.getenv("POSTGRES_USER", "swsuser")
+POSTGRES_USER = os.getenv("POSTGRES_USER", "spentlessuser")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "")
-POSTGRES_DB = os.getenv("POSTGRES_DB", "sws")
+POSTGRES_DB = os.getenv("POSTGRES_DB", "spentless")
 POSTGRES_DSN = URL(
     drivername=POSTGRES_DRIVER_NAME,
     username=POSTGRES_USER,
