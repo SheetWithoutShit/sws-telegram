@@ -9,7 +9,7 @@ import aiohttp
 
 import config
 from models import User
-from errors import SWSDatabaseError
+from errors import DatabaseError
 from notifier.notifications import send_notification
 
 
@@ -50,7 +50,7 @@ async def run_notifier():
                 if not telegram_id:
                     try:
                         telegram_id = await User.get_telegram_id(1)
-                    except SWSDatabaseError:
+                    except DatabaseError:
                         continue
 
                 parse_mode = message_body.get("parse_mode", "markdown")

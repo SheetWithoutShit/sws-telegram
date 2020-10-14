@@ -1,0 +1,20 @@
+language: python
+python: 3.8
+cache: pip
+
+
+jobs:
+  include:
+  - stage: "Lint&UnitTests"
+    install: pip install -r requirements.txt
+    script:
+      - pylint --rcfile=.pylintrc ./telegram/ --init-hook='sys.path.extend(["./telegram/"])'
+  - stage: "AWS Deploy"
+    if: branch = master AND type = push
+    before_script: chmod +x ci/aws_deploy.sh
+    script:
+      - ci/aws_deploy.sh
+
+branches:
+  only:
+  - master
