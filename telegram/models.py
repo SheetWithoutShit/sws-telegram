@@ -6,7 +6,7 @@ from gino import exceptions
 from sqlalchemy.exc import SQLAlchemyError
 
 from db import db
-from errors import SWSDatabaseError
+from errors import DatabaseError
 from cache import cache, TELEGRAM_ID_CACHE_EXPIRE, TELEGRAM_ID_CACHE_KEY
 
 
@@ -35,10 +35,10 @@ class User:
             user = await db.one(cls.SELECT_TELEGRAM_ID, user_id=user_id)
         except exceptions.NoResultFound:
             LOGGER.error("Could not find user by id=%s with activated telegram.", user_id)
-            raise SWSDatabaseError
+            raise DatabaseError
         except SQLAlchemyError as err:
             LOGGER.error("Failed to fetch user by id=%s. Error: %s", user_id, err)
-            raise SWSDatabaseError
+            raise DatabaseError
         else:
             await cache.set(telegram_id_cache_key, user.telegram_id, TELEGRAM_ID_CACHE_EXPIRE)
 

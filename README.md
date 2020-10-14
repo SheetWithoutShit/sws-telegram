@@ -1,7 +1,9 @@
-# Sheet Without Shit. Telegram
+# Spentless. Telegram
 
-TODO: build status
+[![Build Status](https://travis-ci.com/SpentlessInc/spentless-telegram.svg?branch=master)](https://travis-ci.com/SpentlessInc/spentless-telegram)
 
-TODO: installing
+# Description
+The telegram app is created to mainly handle telegram bot commands and reads notifications events from SQS and send messages to a user.
 
-TODO: running
+# How to run?
+Follow the instruction placed in [spentless-infrastructure](https://github.com/SpentlessInc/spentless-infrastructure).
